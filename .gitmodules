@@ -1,0 +1,3 @@
+[submodule "ZshPlug"]
+	path = ZshPlug
+	url = https://git.closedless.xyz/robert/ZshPlug

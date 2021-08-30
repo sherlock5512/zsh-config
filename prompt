@@ -1,0 +1,33 @@
+####################
+# Sherlocks Prompt #
+####################
+
+setopt prompt_subst ## Enable prompt Substitution
+
+## Load vcs_info module
+autoload -Uz vcs_info
+
+## Enable git tracking
+zstyle ':vcs_info:*' enable git
+
+## Set icons for Staged and Unstaged Changes
+zstyle ':vcs_info:git*' stagedstr "✅"
+zstyle ':vcs_info:git*' unstagedstr "⛔"
+
+## Enable check for changes (CPU-intensive)
+## DISABLE THIS ON LOW POWER SYSTEMS
+zstyle ':vcs_info:git*' check-for-changes true
+
+## Set format for Repo Information
+zstyle ':vcs_info:git*' formats "-(%s:שׂ %b %u%c)"
+
+## set precmd to get vcs_info
+## precmd runs before every prompt
+precmd() {
+	vcs_info
+}
+
+PROMPT="$(setTermTitle "(%n@%m %~)")╭╼(%{%F{81}%}%n%{%F{245}%}@%{%F{206}%}%m %{%F{245}%}%~%{%F{259}%})─(%(?.😎.😞 %?))"$'\n'"╰┤"
+RPROMPT='${vcs_info_msg_0_}'
+
+#  vim: set ft=zsh ts=2 sw=2 tw=0 noet :

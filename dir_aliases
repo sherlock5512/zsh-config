@@ -1,0 +1,8 @@
+############################
+# Alias Common Directories #
+############################
+
+alias -g DX='$HOME/Documents'
+alias -g DL='$HOME/Downloads'
+alias -g CN='${XDG_CONFIG_HOME:-$HOME/.config}'
+

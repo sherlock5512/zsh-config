@@ -1,0 +1,19 @@
+#!/bin/sh
+
+colours.sh
+echo '╭───────────╮'
+echo '│ Welcome!! │'
+echo '╰───────────╯'
+date
+if [ -d "$HOME/tmp" ]; then
+    if [ -f "$HOME/tmp/KEEPTMP" ] || [ -f "$HOME/.cleanupResult" ]; then
+        printf "\033[31m\e[1m\e[5mYou have files in your tmp directory\e[0m"
+        exa -alhT ~/tmp || tree ~/tmp
+        if [ -f "$HOME/.cleanupResult" ]; then
+            echo "ISSUE WAS:"
+            cat "$HOME/.cleanupResult"
+        fi
+    fi
+fi
+randomVerse
+colours.sh
