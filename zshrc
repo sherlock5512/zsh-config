@@ -66,8 +66,19 @@ export ZSH_AUTOSUGGEST_HISTORY_IGNORE='(cd|cp|tar|mv|ls|nvim|rm|rmdir|git) *'
 
 ## Load Plugins with ZshPlug
 
-export ZSH_PLUG_plugins=( "zsh-users/zsh-autosuggestions" "zdharma/fast-syntax-highlighting" "MichaelAquilina/zsh-you-should-use" )
+export ZSH_PLUG_plugins=( "zsh-users/zsh-autosuggestions" "zdharma-continuum/fast-syntax-highlighting" "MichaelAquilina/zsh-you-should-use" )
 source $ZDOTDIR/ZshPlug/ZshPlug.zsh
 
+[[ -n "${key[Home]}" ]]      && bindkey "${key[Home]}"       beginning-of-line
+[[ -n "${key[End]}" ]]       && bindkey "${key[End]}"        end-of-line
+[[ -n "${key[Insert]}" ]]    && bindkey "${key[Insert]}"     overwrite-mode
+[[ -n "${key[Delete]}" ]]    && bindkey "${key[Delete]}"     delete-char
+[[ -n "${key[Backspace]}" ]] && bindkey "${key[Backspace]}"  backward-delete-char
+[[ -n "${key[Up]}" ]]        && bindkey "${key[Up]}"         up-line-or-search
+[[ -n "${key[Down]}" ]]      && bindkey "${key[Down]}"       down-line-or-search
+[[ -n "${key[Left]}" ]]      && bindkey "${key[Left]}"       backward-char
+[[ -n "${key[Right]}" ]]     && bindkey "${key[Right]}"      forward-char
+[[ -n "${key[PageUp]}" ]]    && bindkey "${key[PageUp]}"     history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey "${key[PageDown]}"   history-beginning-search-forward
 
 $ZDOTDIR/greet

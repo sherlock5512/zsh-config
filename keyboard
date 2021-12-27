@@ -10,6 +10,10 @@ else
 	echo "Execute \`zkbd\` to create bindings."
 fi
 
+zle -N history-beginning-search-backward-end \
+                history-search-end
+zle -N history-beginning-search-forward-end \
+                history-search-end
 
 [[ -n "${key[Home]}" ]]      && bindkey "${key[Home]}"       beginning-of-line
 [[ -n "${key[End]}" ]]       && bindkey "${key[End]}"        end-of-line
