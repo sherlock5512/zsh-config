@@ -59,6 +59,11 @@ _comp_options+=(globdots)
 zle -N edit-command-line
 bindkey "" edit-command-line
 
+## Load external stuff
+
+## support for opam
+test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null ||
+
 ## Configure Plugins
 export ZSH_AUTOSUGGEST_STRATEGY=(completion history) # suggest from completion then history
 export ZSH_AUTOSUGGEST_USE_ASYNC=1 # make async for SPEED
