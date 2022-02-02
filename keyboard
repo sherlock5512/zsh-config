@@ -3,8 +3,8 @@
 
 autoload -Uz zkbd
 
-if [[ -f $HOME/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]]; then
-	source $HOME/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
+if [[ -f $ZDOTDIR/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]]; then
+	source $ZDOTDIR/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 else
 	echo "WARNING: Keybindingd may not be set correctly!"
 	echo "Execute \`zkbd\` to create bindings."
