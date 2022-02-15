@@ -57,7 +57,7 @@ _comp_options+=(globdots)
 
 ## Configure command line editor
 zle -N edit-command-line
-bindkey "" edit-command-line
+bindkey "^X^E" edit-command-line
 
 ## Enable gpg-agent support
 
