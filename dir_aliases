@@ -1,8 +1,9 @@
-############################
-# Alias Common Directories #
-############################
+####################################
+# create hashtable for common dirs #
+####################################
 
-alias -g DX='$HOME/Documents'
-alias -g DL='$HOME/Downloads'
-alias -g CN='${XDG_CONFIG_HOME:-$HOME/.config}'
-
+hash -d dx="$HOME/Documents"
+hash -d dl="$HOME/Downloads"
+hash -d cn="${XDG_CONFIG_HOME:-$HOME/.config}"
+hash -d px="$HOME/Pictures"
+hash -d pr="$HOME/Projects"
