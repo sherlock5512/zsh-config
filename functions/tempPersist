@@ -1,0 +1,25 @@
+tempPersist() {
+    ARG=$1
+
+    if [ $# -eq 0 ]; then
+	if [[ -f ~/tmp/KEEPTMP ]]; then
+	    echo "Temp is persistent"
+	else
+	    echo "Temp will be Deleted"
+	fi
+    else
+	if [[ $ARG = "on" ]]; then
+	    touch ~/tmp/KEEPTMP
+	    echo "Temp is persistent"
+	elif [[ $ARG = "off" ]]; then
+	    if [[ -f ~/tmp/KEEPTMP ]]; then
+		rm ~/tmp/KEEPTMP
+	    fi
+	    echo "Temp will be Deleted"
+	else
+	    echo "on or off only"
+	fi
+    fi
+
+}
+#  vim: set ft=zsh ts=8 sw=4 tw=0 noet :
