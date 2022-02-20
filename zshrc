@@ -17,6 +17,12 @@ autoload -U edit-command-line
 ## zmodload Modules
 zmodload zsh/complist
 
+## Loca my function
+fpath=( $ZDOTDIR/functions $fpath )
+autoload CleanTmp
+autoload setTermTitle
+autoload tempPersist
+
 ## Source Other files
 source $HOME/.profile
 source ${ZDOTDIR}/aliases
@@ -24,8 +30,6 @@ source ${ZDOTDIR}/dir_aliases
 source ${ZDOTDIR}/prompt
 source ${ZDOTDIR}/keyboard
 
-## Source Functions
-source ${ZDOTDIR}/functions/*
 
 ## Set option
 setopt emacs         ## Emacs style keybinds
