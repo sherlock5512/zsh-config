@@ -1,0 +1,12 @@
+Pre_Greet_Hook() {
+    [ -z $PRE_GREET ]
+    for cmd in "$PRE_GREET"; do
+    	"$cmd"
+    done
+}
+Post_Greet_Hook() {
+    [ -z $PRE_GREET ]
+    for cmd in "$POST_GREET"; do
+    	"$cmd"
+    done
+}
