@@ -1,0 +1,9 @@
+
+setTermTitle() {
+    Terminal=$(echo $TERM | cut -d'-' -f1 )
+    [[ -z $1 ]] && Title="$Terminal" || Title="$Terminal - $1"
+
+    echo -e -n '\e]2;'"$Title"'\a'
+
+}
+#  vim: set ft=zsh ts=8 sw=4 tw=0 noet :
