@@ -19,13 +19,13 @@ zmodload zsh/complist
 
 ## Source Other files
 source $HOME/.profile
-source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases
-source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/dir_aliases
-source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/prompt
-source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/keyboard
+source ${ZDOTDIR}/aliases
+source ${ZDOTDIR}/dir_aliases
+source ${ZDOTDIR}/prompt
+source ${ZDOTDIR}/keyboard
 
 ## Source Functions
-source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/functions/*
+source ${ZDOTDIR}/functions/*
 
 ## Set option
 setopt emacs         ## Emacs style keybinds
@@ -60,10 +60,9 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 ## Enable gpg-agent support
-
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
-gpg-gpg-connect-agent /bye
+gpg-connect-agent /bye
 export GPG_TTY=$(tty)
 
 ## Load external stuff
