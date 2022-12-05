@@ -1,4 +1,4 @@
 chpwd() {
-	[ ! has glow ] && return 0
+	has glow || return 0
 	find $PWD -maxdepth 1  -iname 'readme.md' -exec glow {} \;
 }
