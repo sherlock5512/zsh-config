@@ -1,6 +1,4 @@
-#!/bin/sh
-
-colours.sh
+has colours.sh && colours.sh
 echo '╭───────────╮'
 echo '│ Welcome!! │'
 echo '╰───────────╯'
@@ -15,5 +13,5 @@ if [ -d "$HOME/tmp" ]; then
         fi
     fi
 fi
-randomVerse
-colours.sh
+has randomVerse && randomVerse
+has colours.sh && colours.sh

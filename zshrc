@@ -22,6 +22,7 @@ fpath=( $ZDOTDIR/functions $fpath )
 autoload CleanTmp
 autoload setTermTitle
 autoload tempPersist
+autoload has
 
 ## Source Other files
 source ${ZDOTDIR}/aliases
@@ -46,10 +47,12 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 ## Enable gpg-agent support
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-gpg-connect-agent /bye
-export GPG_TTY=$(tty)
+if [[ "$USE_GPG_AGENT" == "true" ]]; then
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	gpgconf --launch gpg-agent
+	gpg-connect-agent /bye
+	export GPG_TTY=$(tty)
+fi
 
 ## Load external stuff
 
@@ -83,4 +86,4 @@ source $ZDOTDIR/ZshPlug/ZshPlug.zsh
 [[ -n "${key[PageUp]}" ]]    && bindkey "${key[PageUp]}"     history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey "${key[PageDown]}"   history-beginning-search-forward
 
-$ZDOTDIR/greet
+source $ZDOTDIR/greet

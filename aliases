@@ -34,21 +34,23 @@
 
 ## Use Exa instead of ls
 ## REQUIRES NERD FONT
-alias ls='exa --icons --group-directories-first'
+has exa && alias ls='exa --icons --group-directories-first'
 
 ## Shorten xdg-open
-alias xopen='xdg-open'
+has xdg-open && alias xopen='xdg-open'
 
 ## cls Clear Screen run ls
 alias cls='clear; ls'
 
 ## Shorten scriptedit
 ## REQUIRES scriptedit (Script)
-alias se='scriptedit'
+has scriptedit && alias se='scriptedit'
 
 ## YouTube downloader
-alias yt='youtube-dl'
-alias yta='youtube-dl --ignore-config --add-metadata --ignore-errors --extract-audio --format "bestaudio/best"'
+if has youtube-dl ; then
+	alias yt='youtube-dl'
+	alias yta='youtube-dl --ignore-config --add-metadata --ignore-errors --extract-audio --format "bestaudio/best"'
+fi
 
 ##
 alias cp='cp --interactive --verbose'
@@ -62,10 +64,10 @@ alias grep='grep --color=auto'
 alias ip='ip --color=auto'
 
 ## Open Vimwiki
-alias vw='nvim -c VimwikiIndex'
+has nvim && alias vw='nvim -c VimwikiIndex'
 
 ## Change Wineprefix quick and EZ
-alias ws='source wineselect'
+has wineselect && alias ws='source wineselect'
 
 ## zero a terminal session
 alias zero='dirs -c && clear'
@@ -74,11 +76,24 @@ alias zero='dirs -c && clear'
 # FileType Associations #
 #   extension=program   #
 #########################
+if has nvim; then
+	VIM=nvim
+elif has vim; then
+	VIM=vim
+elif has vi; then
+	VIM=vi
+else
+	VIM=''
+fi
 
-alias -s tex=nvim
-alias -s html=nvim
-alias -s pdf=zathura
-alias -s md=nvim
+if [[ -n $VIM ]]; then
+	alias -s tex=$VIM
+	alias -s html=$VIM
+	alias -s md=$VIM
+fi
+unset $VIM
+
+has zathura && alias -s pdf=zathura
 
 
 #  vim: set ft=zsh ts=2 sw=2 tw=0 noet :

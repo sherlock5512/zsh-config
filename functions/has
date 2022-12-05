@@ -1,0 +1,8 @@
+## Has function
+
+has() {
+	Command=$1
+	[[ -z $Command ]] && return 1
+
+	command -v $Command > /dev/null 2>&1
+}
