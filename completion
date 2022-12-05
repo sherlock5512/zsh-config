@@ -1,0 +1,67 @@
+
+echo $fpath
+############
+# Completion Config
+############
+
+## Disable beeping on completions.
+setopt NO_BEEP
+
+## Automatically list ambiguous completions.
+setopt AUTO_LIST
+
+## Automatically use menu completion after the second request for completion.
+setopt AUTO_MENU
+
+## Always fully insert completions.
+setopt MENU_COMPLETE
+
+## Automatically put subscripts directly after parameter expressions.
+setopt AUTO_PARAM_KEYS
+
+## Allow completion within words (i.e. always complete at the cursor position).
+setopt COMPLETE_IN_WORD
+
+## Always move the cursor to the end of a completion after inserting it.
+setopt ALWAYS_TO_END
+
+## Automatically list compleptions when given an unambigous prefix.
+setopt LIST_AMBIGUOUS
+
+## Display markers to indicate what type of file a completion item is.
+setopt LIST_TYPES
+
+## Print an error when provided patterns that are badly formed.
+setopt BAD_PATTERN
+
+
+zstyle ':completion:*' verbose yes
+
+zstyle ':completion:*' group-name '' ## Simply makes the group-name appear with the group
+
+zstyle ':completion:*' menu select ## use menu to select where possible
+
+zstyle ':completion:*' completer _complete _match _approximate ## fuzzy match
+
+zstyle ':completion:*' squeeze-slashes true ## remove trailing slashes
+
+zstyle ':completion:*:descriptions' format '%B%F{green}┨%d┣%f%b' ## better descriptions format
+
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %F{yellow}%d%b%f' ## show when no matches
+
+zstyle ':completion:*:corrections' format '%B%F{yellow}┨%d┤├ errors %e┣%f%b'
+
+zstyle ':completion:*:match:*' original only
+
+zstyle -e ':completion:*:approximate:*' \
+	max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)' ## more errors in longer lines
+
+zstyle ':completion:*:functions' ignored-patterns '_*' ## ignore completions for commands I dont have
+
+zstyle ':completion:*:cd:*' ignore-parents parent pwd ## don't complete parent dir
+
+autoload -Uz +X compinit
+zmodload zsh/complist
+compinit
+
+# vim: ft=zsh

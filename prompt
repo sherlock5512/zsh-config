@@ -11,15 +11,16 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 
 ## Set icons for Staged and Unstaged Changes
-zstyle ':vcs_info:git*' stagedstr "✅"
-zstyle ':vcs_info:git*' unstagedstr "⛔"
+zstyle ':vcs_info:git*' stagedstr "%{%F{green%}%} %{%f%}"
+zstyle ':vcs_info:git*' unstagedstr "%{%F{red%}%} %{%f%}"
 
 ## Enable check for changes (CPU-intensive)
 ## DISABLE THIS ON LOW POWER SYSTEMS
 zstyle ':vcs_info:git*' check-for-changes true
 
 ## Set format for Repo Information
-zstyle ':vcs_info:git*' formats "-(%s:שׂ %b %u%c)"
+zstyle ':vcs_info:git*' formats "-(%{%F{203}%} %{%f%}%s:%{%F{2}%}שׂ %{%f%}%b %u%c)"
+zstyle ':vcs_info:git*' actionformats "-(%{%F{203}%} %{%f%}%s:%{%F{2}%}שׂ %{%f%}%b %u%c)(%a)"
 
 ## set precmd to get vcs_info
 ## precmd runs before every prompt
@@ -27,7 +28,7 @@ precmd() {
 	vcs_info
 }
 
-PROMPT="$(setTermTitle "(%n@%m %~)")╭╼(%{%F{81}%}%n%{%F{245}%}@%{%F{206}%}%m %{%F{245}%}%~%{%F{259}%})─(%(?.😎.😞 %?))"$'\n'"╰┤"
-RPROMPT='${vcs_info_msg_0_}'
+PROMPT="$(setTermTitle "(%n@%m %2~)")╭╼(%{%F{81}%}%n%{%F{245}%}@%{%F{206}%}%m %{%F{245}%}%2~%{%F{259}%})─(%(?.😎.😞 %?))"$'\n'"╰┤"
+export RPROMPT='${vcs_info_msg_0_}'
 
-#  vim: set ft=zsh ts=2 sw=2 tw=0 noet :
+#  vim: set ft=zsh:

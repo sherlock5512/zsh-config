@@ -64,6 +64,12 @@ alias ip='ip --color=auto'
 ## Open Vimwiki
 alias vw='nvim -c VimwikiIndex'
 
+## Change Wineprefix quick and EZ
+alias ws='source wineselect'
+
+## zero a terminal session
+alias zero='dirs -c && clear'
+
 #########################
 # FileType Associations #
 #   extension=program   #

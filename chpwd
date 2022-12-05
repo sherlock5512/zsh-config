@@ -1,0 +1,6 @@
+HAS_GLOW="$(command -v glow)"
+
+chpwd() {
+	[ -z $HAS_GLOW ] && return 0
+	find $PWD -maxdepth 1  -iname 'readme.md' -exec glow {} \;
+}

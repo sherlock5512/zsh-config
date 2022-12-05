@@ -10,54 +10,36 @@ unalias run-help
 ## autoload Modules
 autoload -U +X colors && colors
 autoload -U calendar
-autoload -U run-help 
+autoload -U run-help
 autoload -U +X compinit
 autoload -U edit-command-line
 
 ## zmodload Modules
 zmodload zsh/complist
 
-## Loca my function
+## Load my functions
 fpath=( $ZDOTDIR/functions $fpath )
 autoload CleanTmp
 autoload setTermTitle
 autoload tempPersist
 
 ## Source Other files
-source $HOME/.profile
 source ${ZDOTDIR}/aliases
 source ${ZDOTDIR}/dir_aliases
 source ${ZDOTDIR}/prompt
 source ${ZDOTDIR}/keyboard
+source ${ZDOTDIR}/history
+source ${ZDOTDIR}/chpwd
 
 
 ## Set option
-setopt emacs         ## Emacs style keybinds
+#setopt emacs         ## Emacs style keybinds
+setopt vi
 setopt autocd        ## Change to directory if given as command
 setopt autopushd     ## Automatically use pushd and stack
 setopt correct       ## Pick up on Spelling errors
-setopt SHARE_HISTORY ## Share history across sessions
-setopt hist_verify   ## Edit Commands after expansion
 
-## Configure History File
-export HISTSIZE=10000
-export SAVEHIST=$HISTSIZE
-export HISTFILE=$HOME/.zhistory
-
-## Configure Completions
-zstyle ':completion:*' menu select ## use menu to select where possible
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u' ## better descriptions format
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b' ## show when no matches
-zstyle ':completion:*' completer _complete _match _approximate ## fuzzy match
-zstyle ':completion:*:match:*' original only
-zstyle -e ':completion:*:approximate:*' \
-        max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)' ## more errors in longer lines
-zstyle ':completion:*:functions' ignored-patterns '_*' ## ignore completions for commands I dont have
-zstyle ':completion:*' squeeze-slashes true ## remove trailing slashes
-zstyle ':completion:*:cd:*' ignore-parents parent pwd ## don't complete parent dir
-
-compinit
-_comp_options+=(globdots)
+source ${ZDOTDIR}/completion
 
 ## Configure command line editor
 zle -N edit-command-line
@@ -71,17 +53,22 @@ export GPG_TTY=$(tty)
 
 ## Load external stuff
 
-## support for opam
-test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null ||
+##Configure for homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ## Configure Plugins
 export ZSH_AUTOSUGGEST_STRATEGY=(completion history) # suggest from completion then history
 export ZSH_AUTOSUGGEST_USE_ASYNC=1 # make async for SPEED
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE='(cd|cp|tar|mv|ls|nvim|rm|rmdir|git) *'
 
+
 ## Load Plugins with ZshPlug
 
-export ZSH_PLUG_plugins=( "zsh-users/zsh-autosuggestions" "zdharma-continuum/fast-syntax-highlighting" "MichaelAquilina/zsh-you-should-use" )
+export ZSH_PLUG_plugins=( "zsh-users/zsh-autosuggestions" \
+	"zdharma-continuum/fast-syntax-highlighting" \
+	"jeffreytse/zsh-vi-mode" \
+	"MichaelAquilina/zsh-you-should-use"\
+)
 source $ZDOTDIR/ZshPlug/ZshPlug.zsh
 
 [[ -n "${key[Home]}" ]]      && bindkey "${key[Home]}"       beginning-of-line

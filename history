@@ -1,0 +1,26 @@
+## History Configuration
+
+## Options relating to saving history
+export HISTSIZE=10000
+export SAVEHIST=6000
+export HISTFILE=$XDG_STATE_HOME/zsh/history
+
+set hist_ignore_dups		## Don't log the same thing twice
+set hist_ignore_space		## Don't log things that start with space
+set hist_reduce_blanks		## Compact unnecessary white-space
+set hist_expire_dups_first	## Remove duplicates first (if any exist) when compacting history
+set hist_save_no_dups		## Remove duplicates from history when writing
+
+## Options relating to history use
+set hist_find_no_dups		## Don't show duplicates when searching history
+set hist_verify				## Dont' immediately execute expanded history `eg: sudo !!`
+
+## This stops certain commands saving into the history file
+export HISTORY_IGNORE='(cd(| *)|ls(| *)|pushd(| *)|popd(| *))'
+
+## This hook goes even further and stops anything in the $HISTORY_IGNORE list from being
+## added to the session local history (it still stays around in the up buffer until you run a new command afterwards)
+zshaddhistory() {
+	emulate -L zsh
+	[[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]
+}
