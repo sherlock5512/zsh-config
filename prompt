@@ -26,9 +26,10 @@ zstyle ':vcs_info:git*' actionformats "-(%{%F{203}%} %{%f%}%s:%{%F{2}%}שׂ %{
 ## precmd runs before every prompt
 precmd() {
 	vcs_info
+	setTermTitle "($(whoami)@$(hostname) $(pwd))"
 }
 
-PROMPT="$(setTermTitle "(%n@%m %2~)")╭╼(%{%F{81}%}%n%{%F{245}%}@%{%F{206}%}%m %{%F{245}%}%2~%{%F{259}%})─(%(?.😎.😞 %?))"$'\n'"╰┤"
+PROMPT="╭╼(%{%F{81}%}%n%{%F{245}%}@%{%F{206}%}%m %{%F{245}%}%2~%{%F{259}%})─(%(?.😎.😞 %?))"$'\n'"╰┤"
 export RPROMPT='${vcs_info_msg_0_}'
 
 #  vim: set ft=zsh:
