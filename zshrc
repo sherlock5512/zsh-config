@@ -57,7 +57,9 @@ fi
 ## Load external stuff
 
 ##Configure for homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ -d "/home/linuxbrew" ]]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 ## Configure Plugins
 export ZSH_AUTOSUGGEST_STRATEGY=(completion history) # suggest from completion then history
