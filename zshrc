@@ -24,6 +24,9 @@ autoload setTermTitle
 autoload tempPersist
 autoload has
 
+## check for and load .local/share/zsh/site-functions
+[ -d "$HOME/.local/share/zsh/site-functions" ] && fpath=("$HOME/.local/share/zsh/site-functions" $fpath)
+
 ## Source Other files
 source ${ZDOTDIR}/aliases
 source ${ZDOTDIR}/dir_aliases
