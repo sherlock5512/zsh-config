@@ -63,6 +63,12 @@ and how it works.
  - Automatic use of the directory stack `popd` to go back whence you came
  - Smart history
  - Plug-ins chosen for greatness
+ - Extended Globbing enabled.
+ - 10 second thinking time enforced for big deletes
+ - Expanded directories automatically have `/` appended
+ - Allow comments in interactive mode (this may be useful to mark history
+		 items)
+ - Neaten paths like `../foo/..` to `..` (ChaseDots)
 
 ## Breakdown
 The following sections break down what is in the repository and what

@@ -36,12 +36,19 @@ source ${ZDOTDIR}/history
 source ${ZDOTDIR}/chpwd
 
 
-## Set option
-#setopt emacs         ## Emacs style keybinds
-setopt vi
-setopt autocd        ## Change to directory if given as command
-setopt autopushd     ## Automatically use pushd and stack
-setopt correct       ## Pick up on Spelling errors
+## Set options
+## NOTE: zsh ignores case and underscores
+setopt vi				## Use vi style keybinds
+setopt autoCd			## Change to directory if given as command
+setopt autoPushd		## Automatically use pushd and stack
+setopt chaseDots		## Remove contradictory .. from cd path (e.g cd foo/bar/.. -> cd foo)
+setopt correct			## Pick up on Spelling errors
+setopt extendedGlob		## Allow extended globbing (see man zshexpn)
+setopt markDirs			## Add a trailing '/' to directories when globbing
+setopt interactiveComments ## allow comments in interactive shells
+setopt rmStarWait		## wait 10 seconds when confirming large deletes
+
+
 
 source ${ZDOTDIR}/completion
 
