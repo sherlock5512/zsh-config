@@ -1,0 +1,11 @@
+#This file manages hooks so I can have multiple functions hooked the way I want
+for file in $(find $ZDOTDIR/hooks.d -type f); do
+	source "$file"
+done
+
+add-zsh-hook -Uz chpwd glow
+add-zsh-hook -Uz chpwd osc7
+add-zsh-hook -Uz precmd termtitle
+add-zsh-hook -Uz precmd osc113
+
+# vim: ft=zsh

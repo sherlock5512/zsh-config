@@ -108,11 +108,6 @@ program.
 in that order of preference.
 `pdf` files are mapped to `zathura` when it's installed.
 
-#### `./chpwd`
-This module sets the `chpwd` hook and makes ZSH display any (markdown
-formatted) readme files
-found in the current directory using glow.
-
 #### `./completion`
 This file configures the powerful completion engine of
 ZSH.
@@ -144,6 +139,10 @@ This makes a few changes:
  - Never saves duplicates
  - Ignores duplicates when searching history
  - Requires you press enter after expanding `!!`
+
+#### './hooks'
+ This file loads hook functions found in './hooks.d'
+ and makes it easier to assign hooks where necessary.
 
 #### `./keyboard`
 This file uses `zkbd`(see `man zshcontrib`) to get information about your

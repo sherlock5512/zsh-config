@@ -13,6 +13,7 @@ autoload -U calendar
 autoload -U run-help
 autoload -U +X compinit
 autoload -U edit-command-line
+autoload -U add-zsh-hook
 
 ## zmodload Modules
 zmodload zsh/complist
@@ -33,7 +34,7 @@ source ${ZDOTDIR}/dir_aliases
 source ${ZDOTDIR}/prompt
 source ${ZDOTDIR}/keyboard
 source ${ZDOTDIR}/history
-source ${ZDOTDIR}/chpwd
+source ${ZDOTDIR}/hooks
 
 
 ## Set options

@@ -1,0 +1,6 @@
+## set terminal title
+termtitle () {
+	setTermTitle "($(whoami)@$(hostname) $(pwd))"
+}
+
+## vim: ft=zsh
