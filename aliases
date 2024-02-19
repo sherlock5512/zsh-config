@@ -75,6 +75,8 @@ has wineselect && alias ws='source wineselect'
 ## zero a terminal session
 alias zero='dirs -c && clear'
 
+has fzf && alias gp='cd `find ${Z_PROJECT_DIR:-$HOME/Projects} -type d -name .git | sed "s/.git//" | fzf --preview="cd {} && git log"`'
+
 #########################
 # FileType Associations #
 #   extension=program   #
