@@ -15,3 +15,4 @@ if [ -d "$HOME/tmp" ]; then
 fi
 has randomVerse && randomVerse
 has colours.sh && colours.sh
+has glow && [ -f ~/TODO.md ] && glow ~/TODO.md
