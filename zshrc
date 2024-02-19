@@ -14,6 +14,8 @@ autoload -U run-help
 autoload -U +X compinit
 autoload -U edit-command-line
 autoload -U add-zsh-hook
+autoload -U url-quote-magic
+autoload -U bracketed-paste-magic
 
 ## zmodload Modules
 zmodload zsh/complist
