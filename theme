@@ -1,0 +1,32 @@
+# Attempt to load pywal theme first (unless disabled)
+if has 'wal' ; then
+	if [[ -z $NO_PYWAL ]]; then
+		if [[ -e $XDG_CACHE_HOME/wal/sequences ]]; then
+			cat $XDG_CACHE_HOME/wal/sequences && return
+		fi
+		wal -qnR && return
+	fi
+fi
+
+# Load theme.sh theme uses theme_history to set
+if has 'theme.sh'; then
+	# Load the last set theme automatically
+	[ -e ~/.config/.theme_history ] && theme.sh "$(theme.sh -l|tail -n1)"
+
+
+	# Toggle between last set themes
+
+	last_theme() {
+		theme.sh "$(theme.sh -l | tail -n2 | head -n1)"
+	}
+
+	zle -N last_theme
+	bindkey '^o' last_theme
+
+	alias th='theme.sh -i'
+
+	alias thl='theme.sh --light -i'
+	alias thd='theme.sh --dark -i'
+fi
+
+# vim: ft=zsh

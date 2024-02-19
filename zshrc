@@ -37,6 +37,7 @@ source ${ZDOTDIR}/prompt
 source ${ZDOTDIR}/keyboard
 source ${ZDOTDIR}/history
 source ${ZDOTDIR}/hooks
+source ${ZDOTDIR}/theme
 
 
 ## Set options
