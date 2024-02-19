@@ -27,6 +27,9 @@ And then add the following into `~/.zshenv`:
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ```
 This tells ZSH where the ZSH dotfiles are.
+You may find that using my other dotfile package `shelly` makes life even
+easier for you.
+
 
 ### Important note
 It is possible that your system might not be happy with this.
