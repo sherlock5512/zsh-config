@@ -75,6 +75,10 @@ if [[ -d "/home/linuxbrew" ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+if [[ -f ${XDG_DATA_HOME:="$HOME/.local/share"}/ghcup/env ]]; then
+	source ${XDG_DATA_HOME:="$HOME/.local/share"}/ghcup/env
+fi
+
 ## Configure Plugins
 export ZSH_AUTOSUGGEST_STRATEGY=(completion history) # suggest from completion then history
 export ZSH_AUTOSUGGEST_USE_ASYNC=1 # make async for SPEED
