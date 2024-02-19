@@ -6,5 +6,5 @@ hash -d dx="$HOME/Documents"
 hash -d dl="$HOME/Downloads"
 hash -d cn="${XDG_CONFIG_HOME:-$HOME/.config}"
 hash -d px="$HOME/Pictures"
-hash -d pr="$HOME/Projects"
+hash -d pr="${Z_PROJECT_DIR:-$HOME/Projects}"
 # vim: ft=zsh
