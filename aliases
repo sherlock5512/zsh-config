@@ -34,7 +34,10 @@
 
 ## Use Exa instead of ls
 ## REQUIRES NERD FONT
-has exa && alias ls='exa --icons --group-directories-first'
+has eza && EXA=eza || EXA=exa
+has "$EXA" && alias ls="$EXA --icons --group-directories-first"
+has "$EXA" && alias tree="$EXA --icons --group-directories-first --tree"
+unset EXA
 
 ## Shorten xdg-open
 has xdg-open && alias xopen='xdg-open'
