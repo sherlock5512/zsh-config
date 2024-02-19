@@ -1,5 +1,5 @@
 ## Load readme with glow (if available)
-glow() {
+_hook_glow() {
 	has glow || return 0
 	find $PWD -maxdepth 1  -iname 'readme.md' -exec glow {} \;
 }
