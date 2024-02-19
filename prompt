@@ -11,16 +11,16 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 
 ## Set icons for Staged and Unstaged Changes
-zstyle ':vcs_info:git*' stagedstr "%{%F{green%}%} %{%f%}"
-zstyle ':vcs_info:git*' unstagedstr "%{%F{red%}%} %{%f%}"
+zstyle ':vcs_info:git*' stagedstr "%{%F{green%}%}󰄳 %{%f%}"
+zstyle ':vcs_info:git*' unstagedstr "%{%F{red%}%}󰅙 %{%f%}"
 
 ## Enable check for changes (CPU-intensive)
 ## DISABLE THIS ON LOW POWER SYSTEMS
 zstyle ':vcs_info:git*' check-for-changes true
 
 ## Set format for Repo Information
-zstyle ':vcs_info:git*' formats "-(%{%F{203}%} %{%f%}%s:%{%F{2}%}שׂ %{%f%}%b %u%c)"
-zstyle ':vcs_info:git*' actionformats "-(%{%F{203}%} %{%f%}%s:%{%F{2}%}שׂ %{%f%}%b %u%c)(%a)"
+zstyle ':vcs_info:git*' formats "-(%{%F{203}%} %{%f%}%s:%{%F{2}%} %{%f%}%b %u%c)"
+zstyle ':vcs_info:git*' actionformats "-(%{%F{203}%} %{%f%}%s:%{%F{2}%} %{%f%}%b %u%c)(%a)"
 
 ## do precmd stuff
 _vcsinfo() {
